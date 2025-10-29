@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Adoptar - Refugio Patitas</title>
+
+  <meta name="description" content="Formulario de adopción - Refugio Patitas.">
+ 
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #2b8a6a;
+      --light-green: #c8f5d2;
+      --accent: #6ac489;
+      --bg: #e6f8eb;
+      --dark: #0f1720;
+      --radius: 14px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Nunito", system-ui, sans-serif;
+      background: var(--bg);
+      color: #222;
+      overflow-x: hidden;
+    }
+
+    /* ======= NAVBAR ======= */
+    .navbar {
+      background: transparent !important;
+      box-shadow: none;
+      backdrop-filter: none;
+    }
+
+    .nav-link {
+      font-weight: 600;
+      color: #0e1a13 !important;
+      transition: color 0.3s;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #2b8a6a !important;
+      position: relative;
+    }
+
+    .nav-link.active::after {
+      content: "";
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: #2b8a6a;
+      border-radius: 2px;
+    }
+
+    .navbar-brand strong {
+      color: #14593f;
+    }
+
+    /* ======= FORMULARIO ======= */
+    .card {
+      border: none;
+      border-radius: var(--radius);
+      box-shadow: 0 2px 10px rgba(43, 138, 106, 0.3);
+      background: #ffffffcc;
+      backdrop-filter: blur(6px);
+    }
+
+    .btn-accent {
+      background: #2b8a6a;
+      color: white;
+      border-radius: 50px;
+      transition: 0.3s;
+    }
+
+    .btn-accent:hover {
+      background: #237459;
+      transform: scale(1.05);
+    }
+
+    footer {
+      background: var(--primary);
+      color: #fff;
+      padding: 2rem 0;
+      margin-top: 3rem;
+    }
+
+    footer a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: #eaffef;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <span style="color: #2b8a6a; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;">
+          Refugio <span style="margin-left: 6px;">Patitas</span>
+        </span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navMain">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link active" href="adoptar.html">Adoptar</a></li>
+          <li class="nav-item"><a class="nav-link" href="formulario.html">Formulario</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#mision">Nosotros</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+        </ul>
+        <a class="btn btn-accent ms-3" href="donar.html">Donar</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- FORMULARIO DE ADOPCIÓN -->
+  <main class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="card p-4">
+          <h2 class="fw-bold text-success mb-3">Formulario de Adopción</h2>
+          <p id="selected-animal-text" class="text-muted">Seleccioná un animal desde la página de inicio o completá aquí manualmente.</p>
+
+          <form id="adopt-form" class="needs-validation" novalidate>
+            <input type="hidden" id="animal-hidden" name="animal">
+
+            <div class="mb-3">
+              <label class="form-label">Animal que querés adoptar</label>
+              <input id="animal-visible" name="animal_visible" class="form-control" required>
+              <div class="invalid-feedback">Por favor indicá el nombre del animal.</div>
+            </div>
+
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">Nombre completo</label>
+                <input type="text" name="nombre" class="form-control" required>
+                <div class="invalid-feedback">Ingresá tu nombre.</div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Teléfono</label>
+                <input type="tel" name="telefono" class="form-control" required pattern="[0-9\s+-]{7,}">
+                <div class="invalid-feedback">Ingresá un teléfono válido.</div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Email</label>
+                <input type="email" name="email" class="form-control" required>
+                <div class="invalid-feedback">Ingresá un email válido.</div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">¿Tenés experiencia con mascotas?</label>
+                <select name="experiencia" class="form-select" required>
+                  <option value="">Seleccionar...</option>
+                  <option value="si">Sí</option>
+                  <option value="no">No</option>
+                </select>
+                <div class="invalid-feedback">Seleccioná una opción.</div>
+              </div>
+            </div>
+
+            <div class="mt-4 d-flex justify-content-between">
+              <button type="submit" class="btn btn-success px-4">Enviar solicitud</button>
+              <a href="adoptar.html" class="btn btn-outline-secondary">Volver</a>
+            </div>
+          </form>
+
+          <div class="mt-3">
+            <small class="text-muted">Al enviar, el refugio se contactará para coordinar la visita y proceso de adopción.</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center text-center text-md-start">
+      <div>&copy; <span id="year"></span> Refugio Patitas</div>
+      <div class="mt-3 mt-md-0">
+        <a class="me-3" href="#">Aviso legal</a>
+        <a class="me-3" href="#">Política de privacidad</a>
+        <a href="https://instagram.com" target="_blank"><i class="bi bi-instagram"></i></a>
+        <a href="https://facebook.com" target="_blank" class="ms-3"><i class="bi bi-facebook"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Obtener parámetros de la URL y mostrar el animal seleccionado
+    const params = new URLSearchParams(window.location.search);
+    const animalName = params.get("animal");
+    if (animalName) {
+      const decoded = decodeURIComponent(animalName);
+      document.getElementById("animal-hidden").value = decoded;
+      document.getElementById("animal-visible").value = decoded;
+      document.getElementById("selected-animal-text").textContent =
+        "Vas a solicitar la adopción de: " + decoded;
+    }
+
+    // Validación Bootstrap
+    (function () {
+      'use strict';
+      const form = document.getElementById('adopt-form');
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+        } else {
+          event.preventDefault();
+          alert('Solicitud enviada con éxito. Nos contactaremos pronto.');
+          form.reset();
+          document.getElementById("selected-animal-text").textContent =
+            "Gracias — tu solicitud fue registrada correctamente.";
+        }
+        form.classList.add('was-validated');
+      }, false);
+    })();
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+
